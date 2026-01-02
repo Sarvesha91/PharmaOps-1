@@ -139,7 +139,7 @@ PharmaOps/
    npx hardhat node  # For local development
    ```
 
-## 🔧 Configuration
+##  Configuration
 
 Environment variables are managed via `.env` files in each service directory. Key configurations include:
 
@@ -150,7 +150,7 @@ Environment variables are managed via `.env` files in each service directory. Ke
 - Redis connection details
 - ML model endpoints
 
-## 📊 Usage
+##  Usage
 
 ### User Roles & Dashboards
 
@@ -176,7 +176,7 @@ cd frontend && npm test
 cd backend && npm run test:integration
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -184,15 +184,15 @@ cd backend && npm run test:integration
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Support
+##  Support
 
 For questions or support, please open an issue in the GitHub repository.
 
-## 🔄 CI/CD
+##  CI/CD
 
 The project includes GitHub Actions workflows for:
 
