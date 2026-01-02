@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: PharmaOps API
+  version: 0.1.0
+servers:
+  - url: http://localhost:4000/api
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+  /admin/invite-vendor:
+    post:
+      summary: Invite a vendor
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - companyName
+                - productIds
+              properties:
+                email:
+                  type: string
+                  format: email
+                companyName:
+                  type: string
+                productIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: Vendor invited successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+  /admin/define-requirements:
+    post:
+      summary: Define a regulatory requirement
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - productId
+                - name
+                - description
+                - requiredForExport
+              properties:
+                productId:
+                  type: string
+                name:
+                  type: string
+                description:
+                  type: string
+                requiredForExport:
+                  type: boolean
+      responses:
+        "201":
+          description: Requirement defined successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+  /admin/upload-master-document:
+    post:
+      summary: Upload a master document
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - product
+                - region
+                - s3Url
+                - fileHash
+              properties:
+                title:
+                  type: string
+                product:
+                  type: string
+                region:
+                  type: string
+                s3Url:
+                  type: string
+                  format: uri
+                fileHash:
+                  type: string
+      responses:
+        "201":
+          description: Document uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+  /admin/create-request:
+    post:
+      summary: Create a new request
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - companyId
+              properties:
+                companyId:
+                  type: string
+      responses:
+        "201":
+          description: Request created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+  /admin/tracking:
+    get:
+      summary: Get tracking information (list of shipments)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response with tracking data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
